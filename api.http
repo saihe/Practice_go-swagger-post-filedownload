@@ -1,0 +1,12 @@
+@version = v1
+@baseurl = http://localhost:3000/api/{{version}}
+
+
+POST {{baseurl}}/file
+Content-Type: application/json
+
+{
+  "id": "0001",
+  "name": "call"
+}
+

@@ -1,0 +1,40 @@
+swagger: '2.0'
+info:
+  title: app
+  description: API description in Markdown.
+  version: 1.0.0
+host: localhost
+produces:
+  - application/json
+consumes:
+  - application/json
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /file:
+   post:
+      parameters:
+        - in: body
+          name: file
+          schema:
+            type: object
+            required:
+              - id
+              - name
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+      responses:
+        200:
+          description: ファイル
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              data:
+                type: string
+                format: byte
