@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run",
+      "name": "Run api",
       "type": "go",
       "request": "launch",
       "mode": "debug",
-      "program": "${workspaceFolder}/cmd/app-server",
+      "program": "${workspaceFolder}/api/cmd/app-server",
       "args": [
         "--scheme",
         "http",
