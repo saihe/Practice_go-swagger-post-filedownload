@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import Button from '@mui/material/Button';
+import api from './Api'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const fileDownload = require('js-file-download');
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Button
+          variant="contained"
+          startIcon={<FileDownloadIcon />}
+          onClick={() => {
+            api.post(
+              '/file',
+              {
+                id: '0001',
+                name: 'download'
+              }
+            ).then((res) => {
+              console.log(res);
+              console.log(atob(res.data.data));
+              fileDownload(atob(res.data.data), res.data.name);
+            });
+          }}
+        >ダウンロード</Button>
+      </div>
+    );
+  }
 }
 
 export default App;
